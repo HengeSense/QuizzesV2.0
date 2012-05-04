@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}register_success.html Registration Successful{% endblock %}
+{% block content %}
+<div class="span8">		
+	<span style="margin-left:50px"><br><font size="3">
+	Thank you for registering. Your information has been saved in the database.<br>
+	Now you can login!
+</div>
+<div class="span4">
+	<div class="well">
+        {% if form.errors %}
+            <p><font color="red">Username or password is incorrect!<br />Please try again</font></p>
+        {% endif %}
+
+		<p>Sign in</p>				
+		<form class="form" method="post" action="/login/">{% csrf_token %}				
+			<p><font size="1" face="arial"><strong>Username</strong></p>
+			<font size="1" face="arial"><input type="text" maxlength="30" name="username" id="id_username">					
+			<p><font size="1" face="arial"><strong>Password</strong></p>
+			</font></p><font size="1" face="arial"><input type="password" id="id_password" name="password">					
+			<label class="checkbox">
+			<input type="checkbox"><p><font size="2">Remember me</p>
+			</label>
+			<button type="submit" class="btn btn-primary"><input type="hidden" name="next" value="/" />Sign in</button>
+			<a class="btn btn-danger btn-primary" href="/register">Sign up</a></p>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="span10">
+{% if quizzes %}
+    {% for quizzes in quizzes %}
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<td><i class="icon-pencil icon-black"></i><a href="/quizzes/?id={{ quizzes.quiz_id|escape }}">{{ quizzes.title }}</a>
+				<p>Author: <a href="/profile/?user={{ quizzes.user }}">{{ quizzes.user }}</a>
+				<span style="margin-left:20px">Des: {{ quizzes.description }}</p></td>
+				<td>
+					<div class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-cog icon-black"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Do this quiz</a></li>
+								<li><a href="/edit_quiz/?id={{ quizzes.quiz_id|escape }}">Edit</a></li>
+								<li><a href="/delete/?id={{ quizzes.quiz_id|escape }}">Delete</a></li>
+							</ul>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table> 
+    {% endfor %}
+{% else %}
+<p>No quiz found</p>
+{% endif %}
+</div>
+{% endblock %}

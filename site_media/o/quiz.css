@@ -1,0 +1,121 @@
+#EQuiz {
+	width:900px;
+	margin:10px auto;
+	padding:20px;
+	border:3px solid rgb(213,230,255);
+	border-radius:10px;
+	background:rgb(255,255,255);
+}
+
+#EQuiz:after {
+	display:block;
+	clear:both;
+	content:' ';
+}
+
+
+#EQheader {
+	font-size:10pt;
+	padding:10px 5px;
+	border-bottom:1px solid rgb(170,170,170);
+}
+
+#EQheader:after {
+	display:block;
+	clear:both;
+	content:' ';
+}
+
+#EQtitle {
+	float:left;
+}
+
+#EQtime {
+	float:right;
+}
+
+
+
+
+#EQpagetitle {
+	padding:15px 5px;
+	font-size:18pt;
+}
+
+#EQpageinfo {
+	padding:15px 5px;
+	font-size:12pt;
+	height:150px;
+	line-height:150%;
+}
+
+
+
+
+#EQquestion {
+	padding:15px 5px;
+	font-size:18pt;
+}
+
+#EQoptions a {
+	display:block;
+	color:rgb(0,0,0);
+	padding:10px 5px;
+	font-size:14pt;
+}
+
+#EQoptions a:after {
+	display:block;
+	content:' ';
+	clear:both;
+}
+
+#EQoptions a div {
+	float:left;
+	padding:8px 12px;
+	border-radius:10px;
+	background:rgb(230,230,230);
+	font-size:10pt;
+	font-weight:bold;
+	margin-right:15px;
+	line-height:100%;
+}
+
+#EQoptions a.answer div {
+	background-color:rgb(213,240,255);
+	border:2px solid rgb(0,128,213);
+	color:rgb(0,85,170);
+	padding:6px 10px;
+}
+
+#EQoptions a:hover {
+	background-color:rgb(240,250,255);
+}
+
+#EQfooter a,
+#EQfooter b {
+	display:block;
+	float:left;
+	padding:20px 0;
+	text-align:center;
+	width:240px;
+	font-weight:bold;
+	border:1px solid rgb(213,213,213);
+	margin-top:10px;
+	font-size:12pt;
+	line-height:24px;
+	border-radius:20px;
+}
+
+#EQfooter b {
+	width:390px;
+	font-weight:normal;
+	font-size:10pt;
+	margin-left:9px;
+	margin-right:9px;
+}
+
+
+#EQfooter a.noclick {
+	color:rgb(170,170,170);
+}

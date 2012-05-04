@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}setting.html{% endblock %}
+{% block head %}Your profile{% endblock %}
+{% block content %}
+<div class="span2">
+    <ul class="thumbnails">
+        <li class="span2">
+        <a href="/avatar/change/" class="thumbnail">{% load avatar_tags %}{% avatar user 150 %}</a>
+        </li>
+    </ul>
+    <a class="btn btn-primary" href="/avatar/change/">Change your avatar</a><br></br>
+	<a class="btn btn-primary" href="/avatar/delete/">Delete your avatar</a>	
+</div>
+<div class="span4">
+	<div class="well">
+		<p>You can change your password here</p><br/>
+		<form action="." method="post">{% csrf_token %}
+			<ul>
+			{{ form.as_ul }}
+				<li><input class="btn btn-primary" id="haha" type=submit value="Change Password"/></li>
+			</ul>
+		</form>
+	</div>
+</div>
+{% endblock %}

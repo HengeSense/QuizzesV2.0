@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}register.html User Registration{% endblock %}
+{% block content %}
+<div class="span8">
+		<h2><span style="margin-left:50px">You can do more with a quizzes account</h2>
+
+</div>
+<div class="span4">
+	<div class="well">
+		<p><font size="2" face="arial" color="red">Creat a new account</p>
+		<form method="post" action=".">{% csrf_token %}
+            {% for field in form %}
+            <p>{{ field.errors }}</p>
+            <p><font size="1" face="arial" color="black"><strong>{{ field.label }}</strong></td></p>
+            <p>{{ field }}</p>
+            {% endfor %}
+			<button type="submit" class="btn btn-primary" value="Register">Register</button>
+        </form>
+	</div>
+</div>
+{% endblock %}

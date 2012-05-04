@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}quizzes_manager.html Quizzes of {{ username }}{% endblock %}
+{% block head %}Quizzes list{% endblock %}
+{% block content %}
+    <a href="/add_quiz/">Add a new quiz</a></p>
+    {% include "quizzes_list.html" %}
+{% endblock %}

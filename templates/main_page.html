@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}main_page.html Main page{% endblock %}
+{% block content %}
+{% if user.username %}
+<div class="span10">
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#lA">Your Quizzes</a></li>
+            <li class=""><a data-toggle="tab" href="#lB">Public Quizzes</a></li>
+            <li class=""><a data-toggle="tab" href="#lC">Library</a></li>
+        </ul>
+        <div class="tab-content">
+            
+            <div id="lA" class="tab-pane active">   
+				{% include "quizzes_list.html" %}<a href="/quizzes_list/">Do quizzes</a>
+            </div>
+            <div id="lB" class="tab-pane">
+                Hahaha
+            </div>
+            <div id="lC" class="tab-pane">
+                <a href="/quizzes_manager/?user={{ user.username }}">Manage your quizzes</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="span8">
+	<h2><span style="margin-left:50px">Hello guys, would you like to</h2>
+	<p><span style="margin-left:100px"><img src="site_media/pic/onebit_37.png"><span style="margin-left:20px">Take fun quizzes</span></p>
+	<p><span style="margin-left:100px"><img src="site_media/pic/onebit_20.png"><span style="margin-left:20px">Creat crazy quizzes</span></p>
+	<p><span style="margin-left:100px"><img src="site_media/pic/Web.png"><span style="margin-left:20px">Explore quizzes</span></p>	
+	<p><span style="margin-left:100px"><font size = "5">Just<span style="margin-left:25px"></span>
+		<a class="btn btn-danger btn-large" href="/register">Creat an account</a></p>
+</div>
+<div class="span4">
+	<div class="well">
+		<p>Sign in</p>
+		<form class="form" method="post" action="/login/">{% csrf_token %}
+			<p><font size="1" face="arial"><strong>Username</strong></p>
+			<font size="1" face="arial"><input type="text" maxlength="30" name="username" id="id_username">
+			<p><font size="1" face="arial"><strong>Password</strong></p>
+			<font size="1" face="arial"><input type="password" id="id_password" name="password">
+			<label class="checkbox">
+				<input type="checkbox"><p><font size="2">Remember me</p>
+			</label>
+			<button type="submit" class="btn btn-primary"><input type="hidden" name="next" value="/" />Sign in</button>
+		</form>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

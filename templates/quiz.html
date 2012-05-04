@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}quiz.html Welcome to Hell{% endblock %}
+{% block head %}Welcome to Hell{% endblock %}
+{% block style %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="/site_media/js/quiz.js"></script>
+	<script type="text/javascript" src="/site_media/js/common.js"></script>
+	<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+    <script type="text/javascript" src="/site_media/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/site_media/css/quiz.css"/>
+{% endblock %}
+{% block content %}
+    <div id="EQuiz"></div>
+    <input type="hidden" id="quiz_id" name="variable" value={{ id }}>
+    <input type="hidden" id="title" name="variable" value={{ title }}>
+    <input type="hidden" id="size" name="variable" value={{ size }}>
+
+    {% for v in value %}
+        <input type="hidden" id="q{{ forloop.counter0 }}" name="variable" value="{{ v }}">
+    {% endfor %}
+
+    <script type="text/javascript">
+        var title = document.getElementById('title').value;
+        var id = document.getElementById('quiz_id').value;
+        var size = document.getElementById('size').value;
+        var q = new Array()
+        {% for v in value %}
+            q[{{ forloop.counter0 }}] = document.getElementById('q{{ forloop.counter0 }}').value.split("***")
+        {% endfor %}
+
+        var EQuiz = new Quiz();
+        EQuiz.demo=1;
+        EQuiz.clid='';
+        EQuiz.id=id;
+        EQuiz.stuid='';
+        EQuiz.title=title;
+        EQuiz.timeLeft=0;
+        if (EQuiz.timeLeft) EQuiz.timeInt=setInterval('EQuiz.timeDown()', 1000);
+        var sort='';
+
+        EQuiz.sections[0]={};
+        EQuiz.sections[0].title='Section 1';
+        EQuiz.sections[0].questions={};
+
+        for(i in q){
+            EQuiz.sections[0].questions[i]={};
+            EQuiz.sections[0].questions[i].question=q[i][0];
+            EQuiz.sections[0].questions[i].questid=i;
+            EQuiz.sections[0].questions[i].options={};
+            EQuiz.sections[0].questions[i].answer=-1;
+            var j;
+            for(j=0;j<q[i].length-1;j++){
+                EQuiz.sections[0].questions[i].options[j]={};
+                EQuiz.sections[0].questions[i].options[j].name=q[i][j+1];
+                EQuiz.sections[0].questions[i].options[j].value=j;
+            }
+
+            sort='1';
+            if (sort=='1') EQuiz.sections[0].questions[i].options=shuffle(EQuiz.sections[0].questions[i].options);
+        }
+
+        sort='1';
+        if (sort=='1') EQuiz.sections[0].questions=shuffle(EQuiz.sections[0].questions);
+
+        EQuiz.showquestion(0,0);
+    </script>
+    <a href="/quizzes/?id={{ id }}" style="display:block;clear:both;padding-top:30px;font-weight:bold;text-align:center">&laquo; Back to Quiz Edit Page</a>
+{% endblock %}

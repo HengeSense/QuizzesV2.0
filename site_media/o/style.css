@@ -1,0 +1,30 @@
+html    {
+    background: #417690 url('background.jpg') repeat-x fixed 100%;
+}
+
+body    {
+    /*font-family: 'Tahoma';*/
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+input{
+    display:block;
+    clear:both;
+    height:25px;
+    /*width: 250px;*/
+}
+
+.errorList  {
+    color: #ff0000;
+    float: left;
+}
+
+a:link, a:visited {
+    color: #5b80b2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #33aa33;
+    border-color: #003366;
+}

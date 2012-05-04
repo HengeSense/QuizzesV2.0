@@ -1,0 +1,11 @@
+{% if quizzes %}
+    {% for quizzes in quizzes %}
+        <a href="/do_quizzes/?id={{ quizzes.quiz_id|escape }}">{{ quizzes.title }}</a></br>
+        <ul>
+            <li><p>{{ quizzes.description }}</p></li>
+            <li><p>Posted by: <a href="/profile/?user={{ quizzes.user }}">{{ quizzes.user }}</a></p></li>
+        </ul>
+    {% endfor %}
+{% else %}
+    <p>No quiz found</p>
+{% endif %}

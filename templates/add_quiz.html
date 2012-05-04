@@ -1,0 +1,16 @@
+
+    {% if form.errors %}
+        <p>The title can't be empty</p>
+    {% endif %}
+    <form method="post" action=".">{% csrf_token %}
+        <table>
+            {% for field in form %}
+                <tr>
+                    <td>{{ field.label }}</td>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="save" />
+        <input type="button" value="Back" onclick="javascrip:history.go(-1)">
+    </form>

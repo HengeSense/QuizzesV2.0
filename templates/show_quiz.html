@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}show_quiz.html{% endblock %}
+{% block head %}Welcome to Hell{% endblock %}
+{% block content %}
+<div class="span10">
+	<div class="form-actions">
+		<p>Title:{{ quizzes.title }}</p>
+		<p>Des: {{ quizzes.description }}</p>
+		<p>Author: <a href="/profile/?user={{ quizzes.user }}">{{ quizzes.user }}</a></p>
+    <a href="/do_quizzes/?id={{ quizzes.quiz_id|escape }}">Do this quizzes</a></p>
+    <a href="/mc/?id={{ quizzes.quiz_id|escape }}" id='link_content'>Add question</a>
+    </div>
+	
+	{% include "questions_list.html" %}
+	
+	
+</div>
+{% endblock %}

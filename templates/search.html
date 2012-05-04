@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Search Quiz{% endblock %}
+{% block head %}Search Quiz{% endblock %}
+{% block content %}
+<form id="search-form" method="POST" action="."> {% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="search" />
+</form>
+<div id="search-results">
+	{% if not quiz %}
+		<h2> Not found </h2>
+	{% endif %}
+	{% if quiz %}
+		{% for q in quiz %}
+			<p> {{q.title}} </p>
+			<p> {{q.user}} </p>
+		{% endfor %}
+	{% endif %}
+</div>
+{% endblock %}

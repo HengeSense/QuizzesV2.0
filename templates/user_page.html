@@ -1,0 +1,8 @@
+<!--will be deleted-->
+
+{% extends "base.html" %}
+{% block title %}user_page.html{{ username }}{% endblock %}
+{% block head %}Quizzes for {{ username }}{% endblock %}
+{% block content %}
+    {% include "quizzes_list.html" %}
+{% endblock %}
